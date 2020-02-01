@@ -1,0 +1,313 @@
+{
+    "menus": {
+        "id": "1",
+        "menu": {
+            "concessionName": "Chic-fil-a",
+            "deliveryFee": "$1.50",
+            "avgDeliveryTime": "30",
+            "logo": "https: //someaddress.to.image.amazon.com.image.jpg",
+            "timeInfo": {
+                "sat": [
+                    {
+                        "open": "12:00",
+                        "close": "22:30"
+                    }
+                ],
+                "sun": [
+                    {
+                        "open": "12:00",
+                        "close": "22:30"
+                    }
+                ],
+                "mon": [
+                    {
+                        "open": "12:00",
+                        "close": "22:30"
+                    }
+                ],
+                "tue": [
+                    {
+                        "open": "12:00",
+                        "close": "22:30"
+                    }
+                ],
+                "wed": [
+                    {
+                        "open": "12:00",
+                        "close": "22:30"
+                    }
+                ],
+                "thu": [
+                    {
+                        "open": "12:00",
+                        "close": "22:30"
+                    }
+                ],
+                "fri": [
+                    {
+                        "open": "12:00",
+                        "close": "22:30"
+                    }
+                ]
+            },
+            "categories": [
+                {
+                    "name": "Entrees",
+                    "menuItems": [
+                        {
+                            "name": "Chicken Sandwich",
+                            "description": "A boneless breast of chicken seasoned to perfection, hand-breaded, pressure cooked in 100% refined peanut oil and served on a toasted, buttered bun.",
+                            "images": [],
+                            "subItems": [
+                                {
+                                    "name": "",
+                                    "price": "$3.55"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Dexluxe Sandwich",
+                            "description": "A boneless breast of chicken seasoned to perfection, hand-breaded, pressure cooked in 100% refined peanut oil and served on a toasted, buttered bun with dill pickle chips, Green Leaf lettuce, tomato and American cheese.",
+                            "images": [],
+                            "subItems": [
+                                {
+                                    "name": "No Cheese",
+                                    "price": "$3.85"
+                                },
+                                {
+                                    "name": "American Cheese",
+                                    "price": "$4.15"
+                                },
+                                {
+                                    "name": "Colby Jack",
+                                    "price": "$4.15"
+                                },
+                                {
+                                    "name": "Pepper Jack",
+                                    "price": "$4.15"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Spicy Chicken Sandwich",
+                            "description": "A boneless breast of chicken seasoned with a spicy blend of peppers, hand-breaded, pressure cooked in 100% refined peanut oil and served on a toasted, buttered bun with dill pickle chips. Gluten-free bun or multigrain bun also available at an additional cost.",
+                            "image": [],
+                            "subItems": [
+                                {
+                                    "name": "",
+                                    "price": "$3.85"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Spicy Deluxe Sandwich",
+                            "description": "A boneless breast of chicken seasoned with a spicy blend of peppers, hand-breaded, pressure cooked in 100% refined peanut oil and served on a toasted, buttered bun with dill pickle chips, Green Leaf lettuce, tomato and Pepper Jack Cheese. Gluten-free bun or multigrain bun also available at an additional cost.",
+                            "image": [],
+                            "subItems": [
+                                {
+                                    "name": "No Cheese",
+                                    "price": "$4.15"
+                                },
+                                {
+                                    "name": "American Cheese",
+                                    "price": "$4.45"
+                                },
+                                {
+                                    "name": "Colby Jack Cheese",
+                                    "price": "$4.45"
+                                },
+                                {
+                                    "name": "Pepper Jack",
+                                    "price": "$4.45"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Grilled Chicken Sandwich",
+                            "description": "A lemon-herb marinated boneless breast of chicken, grilled for a tender and juicy backyard-smokey taste, served on a toasted Multigrain Brioche bun with Green Leaf lettuce and tomato. Served with Honey Roasted BBQ Sauce.",
+                            "image": [],
+                            "subItems": [
+                                {
+                                    "name": "",
+                                    "price": "$5.05"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Grilled Chicken Club",
+                            "description": "A lemon-herb marinated boneless breast of chicken, grilled for a tender and juicy backyard-smokey taste, served on a toasted Multigrain Brioche bun with Colby-Jack cheese, applewood smoked bacon, Green Leaf lettuce and tomato. Served with Honey Roasted BBQ Sauce. Available with Gluten-free bun for an additional cost.",
+                            "image": [],
+                            "subItems": [
+                                {
+                                    "name": "No Cheese",
+                                    "price": "$6.09"
+                                },
+                                {
+                                    "name": "American Cheese",
+                                    "price": "$6.39"
+                                },
+                                {
+                                    "name": "Colby Jack",
+                                    "price": "$6.39"
+                                },
+                                {
+                                    "name": "Pepper Jack",
+                                    "price": "$6.39"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Nuggets",
+                            "description": "Bite-sized pieces of tender all breast meat chicken, seasoned to perfection, hand-breaded and pressure cooked in 100% refined peanut oil.",
+                            "image": [],
+                            "subItems": [
+                                {
+                                    "name": "4 Count",
+                                    "price": "$1.84"
+                                },
+                                {
+                                    "name": "6 Count",
+                                    "price": "$2.76"
+                                },
+                                {
+                                    "name": "8 Count",
+                                    "price": "$3.65"
+                                },
+                                {
+                                    "name": "12 Count",
+                                    "price": "$5.15"
+                                },
+                                {
+                                    "name": "30 Count",
+                                    "price": "$12.85"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Chick-n-Strips",
+                            "description": "Made from the most tender part of the chicken breast, Chick-n-Strips™ are marinated in special seasonings, hand-breaded and pressure cooked to perfection in 100% refined peanut oil. They are mouth watering and generously portioned. Available in 3-count or 4-count entrées with choice of dipping sauce.",
+                            "image": [],
+                            "subItems": [
+                                {
+                                    "name": "1 Count",
+                                    "price": "$1.35"
+                                },
+                                {
+                                    "name": "2 Count",
+                                    "price": "$2.65"
+                                },
+                                {
+                                    "name": "3 Count",
+                                    "price": "$3.89"
+                                },
+                                {
+                                    "name": "4 Count",
+                                    "price": "$4.99"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Grilled Cool Wrap",
+                            "description": "Sliced grilled chicken breast, nestled in a fresh mix of Green Leaf lettuce, petite red and green lettuce, and shredded green cabbage with a blend of shredded Monterey Jack and Cheddar cheeses, tightly rolled in a flaxseed flour flat bread. Made fresh daily. Served with Avocado Lime Ranch dressing (or guest’s choice of dressing).",
+                            "image": [],
+                            "subItems": [
+                                {
+                                    "name": "",
+                                    "price": "$6.15"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Grilled Nuggets",
+                            "description": "Bite-sized pieces of boneless breast of chicken, marinated with a special blend of seasonings and grilled for a tender and juicy backyard-grilled taste.",
+                            "image": [],
+                            "subItems": [
+                                {
+                                    "name": "4 Count",
+                                    "price": "$2.16"
+                                },
+                                {
+                                    "name": "6 Count",
+                                    "price": "$3.24"
+                                },
+                                {
+                                    "name": "8 Count",
+                                    "price": "$4.25"
+                                },
+                                {
+                                    "name": "12 Count",
+                                    "price": "$6.35"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Sides",
+                    "menuItems": [
+                        {
+                            "name": "Waffle Potato Fries",
+                            "description": "Waffle-shaped potatoes with the skin. Cooked in canola oil until crispy outside and tender inside.",
+                            "images": [],
+                            "subItems": [
+                                {
+                                    "name": "Small Fries",
+                                    "price": "$1.65"
+                                },
+                                {
+                                    "name": "Medium Fries",
+                                    "price": "$1.85"
+                                },
+                                {
+                                    "name": "Large Fries",
+                                    "price": "$2.09"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Side Salad",
+                    "description": "A fresh bed of mixed greens, topped with a blend of shredded Monterey Jack and Cheddar cheeses and grape tomatoes. Made fresh daily. Served with Charred Tomato, Crispy Red Bell Peppers and guest’s choice of dressing.",
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "",
+                            "price": "$3.09"
+                        }
+                    ]
+                },
+                {
+                    "name": "Chicken Noodle Soup",
+                    "description": "Shredded Chick-fil-A® chicken breast, chopped carrots and celery with egg noodles in a hearty broth. Served with Saltine crackers. (Served only as a seasonal item at many Chick-fil-A Mall Restaurants.)",
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "Cup",
+                            "price": "$2.89"
+                        },
+                        {
+                            "name": "Bowl",
+                            "price": "$4.45"
+                        }
+                    ]
+                },
+                {
+                    "name": "Greek Yogurt Parfait",
+                    "description": "Creamy, organic, vanilla bean Greek yogurt with fresh berries and your choice of toppings.",
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "With Cookie Crumbs",
+                            "price": "$3.19"
+                        },
+                        {
+                            "name": "With Granola",
+                            "price": "$3.19"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

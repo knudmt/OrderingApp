@@ -17,12 +17,18 @@
 
 <body>
 
+  
+
+
+
     <!-- table testing -->
-    <table id="basicTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
-        <thead>
-            <tr>Concession Name</tr>
-        </thead>
+    <table id="basicTable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+        <tr>
+             <div  id="result">waiting for result</div>
+        </tr>
     </table>
+
+
 
 
 </body>
@@ -44,16 +50,41 @@
 
 
 <script>
+    function concat(){
+    var result = document.getElementById("result");
+    result.innerText = name;
+}
+  
+var m = new Menus("1");
+var menu = m.getMenus();
+var name = menu.menus.menu.concessionName;
+
 
 function getMenu(){
-    var m = new Menus("1");
-    var menu = m.getMenus();
+    concat(); 
+    var formatted = m.format(menu);
+    
+    
 
-    console.log("Menu for: " + menu.menus.menu.concessionName + ',' + " has an id of: " + menu.menus.id);
+    var table = $('#basicTable').DataTable({
+                    data: formatted,
+                    columns:[{
+                        title: "Menu Items"
+                    }],
+                });
+    $('#basicTable').on('click', 'tr', function () {
+         var data = table.row( this ).data();
+         alert( 'You clicked on '+data[0]+'\'s row' );
+    } );
+
+
+    console.log("Menu for: " +  menu.menus.menu.categories[0].menuItems[0].name + ',' + " has an id of: " + menu.menus.id);
 }
 
 
 window.onload = getMenu();
+
+
 
 </script>
 
