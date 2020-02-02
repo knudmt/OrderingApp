@@ -27,4 +27,17 @@ class Menus {
 
         return menu;
     }
+    format(menu){
+        
+        var root = new Array(0);
+
+        var i;
+        for(i = 0; i < menu.menus.menu.categories[0].menuItems.length; i++){
+            var ta = new Array(0)
+            ta[0] = menu.menus.menu.categories[0].menuItems[i].name;
+            root.push(ta);
+        }
+
+        return root;
+    }
 }
