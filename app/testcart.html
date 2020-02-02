@@ -29,6 +29,8 @@
 
 <script src="../js/concessions.js"></script>
 <script src="../js/menus.js"></script>
+<script src="../js/cart.js"></script>
+<script src="../js/appItems.js"></script>
 
 <!-- JQuery -->
 <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
@@ -45,28 +47,29 @@
 
 <script>
 
-function getData(){
-    var cs = new ConcessionList('Tampa');
-    var data = cs.loadConcessions();
-    var formatted = cs.format(data);
+function testCart(){
+    var cart = new Cart();
+
+    var description = "dummy item with lots of jelly";
+    var price = 11.45;
+    var quanity = 1;
+
+    var item = new AppItems(description, price, quanity);
+
+    console.log(item.constructor.name);
+    item.log();
+
+    cart.addItem(item);
+
+    console.log("Number of items in cart: " + cart.getItemCount());
+
+    cart.removeItem(0);
 
 
-    $('#basicTable').DataTable({
-                    data: formatted,
-                    columns:[{
-                        title: "Concession Name"
-                    }],
-                });
-
-
-    // test menus
-    var m = new Menus(1);
-    var data = m.getMenus();
-
-    console.log('data ' + data);
+    console.log("After removing item in cart " + cart.getItemCount());
 }
 
-window.onload = getData();
+window.onload = testCart();
 
 </script>
 
