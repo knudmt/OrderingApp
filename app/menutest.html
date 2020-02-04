@@ -77,8 +77,16 @@ function getMenu(){
                 });
     $('#basicTable').on('click', 'button', function () {
          var data = table.row( this ).data();
-         alert( "Item was added to Cart")
+         var row = $(this).find('td:first').text();
+         
+         
     } );
+    $('#basicTable').find('tr').click( function(){
+        var row = $(this).find('td:first').text();
+        var addCart = "Add to Cart"
+        var s = row.replace(addCart, '')
+        alert(s + " added to Cart");
+    });
 
 
     console.log("Menu for: " +  menu.menus.menu.categories[0].menuItems[0].name + ',' + " has an id of: " + menu.menus.id);
