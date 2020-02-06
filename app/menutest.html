@@ -26,7 +26,9 @@
         <tr>
              <div  id="result">waiting for result</div>
         </tr>
+        
     </table>
+    <button id="Cart Button" type="button">View Cart</button>
 
 
 
@@ -35,6 +37,8 @@
 
 <script src="../js/concessions.js"></script>
 <script src="../js/menus.js"></script>
+<script src="../js/appItems.js"></script>
+<script src="../js/cart.js"></script>
 
 <!-- JQuery -->
 <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
@@ -54,6 +58,7 @@
     var result = document.getElementById("result");
     result.innerText = name;
 }
+
   
 var m = new Menus("1");
 var menu = m.getMenus();
@@ -63,30 +68,46 @@ var name = menu.menus.menu.concessionName;
 function getMenu(){
     concat(); 
     var formatted = m.format(menu);
+    var cart = new Cart();
+    document.getElementById("Cart Button").onclick = function () {
+        window.open("./testcart.html","_self")
+    };
+    
+    
+
     
     
 
     var table = $('#basicTable').DataTable({
         "fnCreatedRow": function( nRow, aData, iDataIndex ) {
            $('td:eq(0)', nRow).append("<div class='col1d'><button class='editBut'><img >Add to Cart</button></div>");
-       },
+        },
+       
                     data: formatted,
-                    columns:[{
-                        title: "Menu Items"
-                    }],
-                });
-    $('#basicTable').on('click', 'button', function () {
-         var data = table.row( this ).data();
-         var row = $(this).find('td:first').text();
+                    columns:[
+                        {title: "Item Name", "width":"20%"},
+                        {title: "Item Description"},
+                        {title: "Item Price"},
+                    ],
+                })
+       
          
          
-    } );
+    
     $('#basicTable').find('tr').click( function(){
-        var row = $(this).find('td:first').text();
-        var addCart = "Add to Cart"
-        var s = row.replace(addCart, '')
-        alert(s + " added to Cart");
+        var data = table.row($(this)).data();
+        alert(data[0] + " added to Cart " + data[2]);
+        var appItem = new AppItems(data[0],data[2],1);
+        appItem.log();
+        cart.addItem(appItem);
+        cart.log();
+        
+
+
+        
+
     });
+       
 
 
     console.log("Menu for: " +  menu.menus.menu.categories[0].menuItems[0].name + ',' + " has an id of: " + menu.menus.id);
