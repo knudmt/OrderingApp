@@ -33,11 +33,18 @@ class Menus {
 
         var i;
         for(i = 0; i < menu.menus.menu.categories[0].menuItems.length; i++){
-            var ta = new Array(0)
+            var ta = new Array(2)
+            
             ta[0] = menu.menus.menu.categories[0].menuItems[i].name;
+            ta[1] = menu.menus.menu.categories[0].menuItems[i].description;
+            ta[2] = menu.menus.menu.categories[0].menuItems[i].subItems[0].price;
+            console.log(ta[0] + " , " + ta[1] + " , " + ta[2]);
             root.push(ta);
         }
 
         return root;
     }
+    
+    
+   
 }
