@@ -5,9 +5,11 @@ class Cart
     }
 
     addItem(AppItems){
-        if(AppItems.constructor.name != "AppItems"){
-            throw new Error("Expected item to be of class 'AppItems'");
+        
+        if(AppItems == null){
+            throw 'AppItems is undefined';
         }
+
         this.items.push(AppItems);
     }
 
