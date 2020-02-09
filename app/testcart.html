@@ -31,7 +31,8 @@
     <p> Tax: <span id="tax"></span></p>
     <p> Fees: <span id="fees"></span></p>
     <p> TOTAL: <span id="total"></span></p>
-
+    
+    <button id="Form Button" type="button">Proceed to Checkout</button>
 
 </body>
 
@@ -58,6 +59,9 @@
 function testCart(){
     var getObject = JSON.parse(localStorage.getItem('cart'));
     console.log(getObject);
+    document.getElementById("Form Button").onclick = function () {
+        window.open("./checkout.html","_self")
+    };
     
 
     var table = $('#basicTable').DataTable({
