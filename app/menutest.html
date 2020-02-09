@@ -70,6 +70,7 @@ function getMenu(){
     var formatted = m.format(menu);
     var cart = new Cart();
     document.getElementById("Cart Button").onclick = function () {
+        localStorage.setItem('cart', JSON.stringify(cart));
         window.open("./testcart.html","_self")
     };
     
@@ -101,6 +102,7 @@ function getMenu(){
         appItem.log();
         cart.addItem(appItem);
         cart.log();
+        
         
 
 
