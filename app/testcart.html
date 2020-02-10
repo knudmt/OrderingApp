@@ -16,14 +16,23 @@
 </head>
 
 <body>
-
+    <p>
+        Cart
+    </p>
     <!-- table testing -->
     <table id="basicTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
-            <tr>Concession Name</tr>
+            <tr></tr>
+           
         </thead>
     </table>
 
+    <p> Totals: <span id="totals"></span></p>
+    <p> Tax: <span id="tax"></span></p>
+    <p> Fees: <span id="fees"></span></p>
+    <p> TOTAL: <span id="total"></span></p>
+    
+    <button id="Form Button" type="button">Proceed to Checkout</button>
 
 </body>
 
@@ -42,31 +51,42 @@
 <!-- Bootstrap core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-
+<script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.20/api/sum().js"></script>
 
 
 <script>
 
 function testCart(){
-    var cart = new Cart();
+    var getObject = JSON.parse(localStorage.getItem('cart'));
+    console.log(getObject);
+    document.getElementById("Form Button").onclick = function () {
+        window.open("./checkout.html","_self")
+    };
+    
 
-    var description = "dummy item with lots of jelly";
-    var price = 11.45;
-    var quanity = 1;
+    var table = $('#basicTable').DataTable({
+                    "searching": false,
+                    "info": false, 
+                    "lengthChange": false,
+                    "paging":   false,
+                    "ordering": false,
+                    data: getObject.items,
+                    columns:[
+                        {title: "Item Name", "width":"20%", data:'_description'},
+                        {title: "Item Price", data:'_price'},
+                        {title: "Item Quantity", data:'_quantity'},
+                    ],
+                });
 
-    var item = new AppItems(description, price, quanity);
+    var totals = table.column(1).data().sum();
+    document.getElementById("totals").innerText = '$' + totals.toFixed(2);
+    document.getElementById("tax").innerText = '6%';
+    document.getElementById("fees").innerText = '$5.00';
+    var total = totals + (totals*.06) + 5;
+    document.getElementById("total").innerText = '$' + total.toFixed(2);
+    
+            
 
-    console.log(item.constructor.name);
-    item.log();
-
-    cart.addItem(item);
-
-    console.log("Number of items in cart: " + cart.getItemCount());
-
-    cart.removeItem(0);
-
-
-    console.log("After removing item in cart " + cart.getItemCount());
 }
 
 window.onload = testCart();

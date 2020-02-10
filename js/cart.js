@@ -49,7 +49,9 @@ class Cart
             return "cart already empty";
         }
     }
+
     log(){
         console.log("There are " + this.items.length + " items in the cart")
     }
+   
 }
