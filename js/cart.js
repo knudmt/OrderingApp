@@ -1,39 +1,43 @@
-class Cart 
-{
+/* Developer note: A singleton pattern is not the 'best' practice, especially in javascript 
+   However, due to time constraints and the lack of planning, this is where we are.
+   My apologies to the next developer that has to mess with this...
+*/
+
+class Cart {
     constructor(){
-        this.items = []; 
+        if(!Cart.instance){
+            this._items = [];
+            Cart.instance = this;
+        }
+        return Cart.instance;
     }
 
     addItem(AppItems){
-        
         if(AppItems == null){
             throw 'AppItems is undefined';
         }
-
-        this.items.push(AppItems);
+        this._items.push(AppItems);
     }
 
     getItemCount(){
-        return this.items.length;
+        return this._items.length;
     }
 
     getAllItems(){
-        return this.items;
+        return this._items;
     }
 
     removeItem(index){
-
         var found = 0;
 
-        for(var i = 0; i < this.items.length; i++){
+        for(var i = 0; i < this._items.length; i++){
             if(i == index){
-                this.items.splice(i, 1);
+                this._items.splice(i, 1);
                 found = 1;
             }
         }
 
-        if(found == 1)
-        {
+        if(found == 1){
             return "removed";
         }
         else
@@ -43,15 +47,15 @@ class Cart
     }
 
     deleteCart(){
-        if(this.items.length > 0){
-            this.items.splice(0, this.items.length);
+        if(this._items.length > 0){
+            this._items.splice(0, this._items.length);
         }else{
-            return "cart already empty";
+            return "cart is already empty";
         }
     }
-
-    log(){
-        console.log("There are " + this.items.length + " items in the cart")
-    }
-   
 }
+
+const instance = new Cart();
+Object.freeze(instance);
+
+export default instance;
