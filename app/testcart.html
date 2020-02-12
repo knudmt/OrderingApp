@@ -33,6 +33,9 @@
     <p> TOTAL: <span id="total"></span></p>
     
     <button id="Form Button" type="button">Proceed to Checkout</button>
+    <button id="Menu Button" type="button">Back to Menu</button>
+    <button id="List Button" type="button">Back to Concessions List</button>
+    
 
 </body>
 
@@ -62,6 +65,12 @@ function testCart(){
     document.getElementById("Form Button").onclick = function () {
         window.open("./checkout.html","_self")
     };
+    document.getElementById("Menu Button").onclick = function () {
+        window.open("./menutest.html","_self")
+    };
+    document.getElementById("List Button").onclick = function () {
+        window.open("./testjs.html","_self")
+    };
     
 
     var table = $('#basicTable').DataTable({
@@ -75,10 +84,39 @@ function testCart(){
                         {title: "Item Name", "width":"20%", data:'_description'},
                         {title: "Item Price", data:'_price'},
                         {title: "Item Quantity", data:'_quantity'},
+                        {title: "Add or Delete Item", "defaultContent": "<button id=\"add\">Add</button><button id=\"del\">Delete</button>"},
+                        
                     ],
                 });
+        document.getElementById("add").onclick = function () {
+            getObject.items[0]._quantity = getObject.items[0]._quantity + 1
+            //table.clear().rows.add(getObject.items).draw();
+            console.log(getObject.items[0]._quantity)
+            var new_totals = (table.column(1).data().sum()) * getObject.items[0]._quantity;
+            $("#totals").html('$' + new_totals.toFixed(2));
+            $("#total").html('$' + (new_totals + (new_totals*.06) + 5).toFixed(2));
+            
+    };
+        document.getElementById("del").onclick = function () {
+            if (getObject.items[0]._quantity < 1) {
+                delete getObject.items[0]
+                console.log(getObject.items)
+            } else {
+                getObject.items[0]._quantity = getObject.items[0]._quantity - 1
+            //table.clear().rows.add(getObject.items).draw();
+            console.log(getObject.items[0]._quantity)
+            var new_totals = (table.column(1).data().sum()) * getObject.items[0]._quantity;
+            $("#totals").html('$' + new_totals.toFixed(2));
+            $("#total").html('$' + (new_totals + (new_totals*.06) + 5).toFixed(2));
+            }
+            
+    };
 
-    var totals = table.column(1).data().sum();
+    
+    
+    
+
+    var totals = (table.column(1).data().sum()) * getObject.items[0]._quantity;
     document.getElementById("totals").innerText = '$' + totals.toFixed(2);
     document.getElementById("tax").innerText = '6%';
     document.getElementById("fees").innerText = '$5.00';
