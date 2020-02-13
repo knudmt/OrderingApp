@@ -1,43 +1,46 @@
-/* Developer note: A singleton pattern is not the 'best' practice, especially in javascript 
-   However, due to time constraints and the lack of planning, this is where we are.
-   My apologies to the next developer that has to mess with this...
-*/
-
-class Cart {
+class Cart 
+{
     constructor(){
-        if(!Cart.instance){
-            this._items = [];
-            Cart.instance = this;
-        }
-        return Cart.instance;
+        this.items = []; 
     }
 
     addItem(AppItems){
+        
         if(AppItems == null){
             throw 'AppItems is undefined';
         }
-        this._items.push(AppItems);
+
+        this.items.push(AppItems);
+    }
+    //    *MUST* call save to set the array of items to the cart
+    save(){
+        if(this.items.length == 0){
+            throw 'no items in cart';
+        }
+        window.localStorage.setItem('cart', JSON.stringify(this.items));
     }
 
     getItemCount(){
-        return this._items.length;
+        return this.items.length;
     }
 
     getAllItems(){
-        return this._items;
+        return this.items;
     }
 
     removeItem(index){
+
         var found = 0;
 
-        for(var i = 0; i < this._items.length; i++){
+        for(var i = 0; i < this.items.length; i++){
             if(i == index){
-                this._items.splice(i, 1);
+                this.items.splice(i, 1);
                 found = 1;
             }
         }
 
-        if(found == 1){
+        if(found == 1)
+        {
             return "removed";
         }
         else
@@ -47,15 +50,21 @@ class Cart {
     }
 
     deleteCart(){
-        if(this._items.length > 0){
-            this._items.splice(0, this._items.length);
+        if(this.items.length > 0){
+            this.items.splice(0, this.items.length);
+            window.localStorage.removeItem('cart');
         }else{
-            return "cart is already empty";
+            return "cart already empty";
+        }
+    }
+    
+    printStorage(){
+        var saved = JSON.parse(window.localStorage.getItem('cart'));
+        
+        for(var key in saved){
+            if(saved.hasOwnProperty(key)){
+               console.log('item: ' + saved[key].description + " price: " + saved[key].price + " quanity: " + saved[key].quanity);
+            }
         }
     }
 }
-
-const instance = new Cart();
-Object.freeze(instance);
-
-export default instance;
