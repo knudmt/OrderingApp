@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<link rel="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+<link rel="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" ></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.10.20/api/sum().js"></script>
+
+</head>
+<body>
+
+	<table id="example" class="stripe row-borders hover" width="100%"></table>
+    <p>Total:<span id="total"></span></p>
+
+
+<script>
+var dataSet = [
+    {name:"Chicken Sandwich", quantity:1, price:3.42},
+    {name:"Burger", quantity:1, price:3.99}
+];
+
+function updateTotals () {
+    var items=dataSet.length;
+    var total = 0;
+    for (i=0; i<items; i++) {
+        total = total + (dataSet[i].price * dataSet[i].quantity);
+    }
+    total.toFixed(2);
+    console.log('total = ' + total);
+    $('#total').text('$' + total);
+}
+ 
+$(document).ready(function() {
+    var table = $('#example').DataTable( {
+        data: dataSet,
+        searching: false, 
+        paging: false, 
+        info: false,
+        order:[],
+        columns: [
+            { title: "Name", data:"name", orderable:false},
+            { title: "Quantity", data:"quantity" , orderable:false},
+            { title: "price", data:"price" , orderable:false},
+			{data: null, orderable:false, defaultContent: '<button id="add">+</button><button id="remove">-</button>'}
+        ]
+    } );
+
+    $('#example tbody').on( 'click', '#add', function () {
+        var i = table.row( $(this).parents('tr') ).index()
+        console.log ("Add clicked on row = " + i); 
+        dataSet[i].quantity = dataSet[i].quantity + 1;
+        table.clear().draw();
+        table.rows.add(dataSet); // Add new data
+        table.columns.adjust().draw(); // Redraw the DataTable
+        updateTotals();
+    } );
+
+    $('#example tbody').on( 'click', '#remove', function () {
+        var i = table.row( $(this).parents('tr') ).index()
+        console.log ("Remove clicked on row = " + table.row( $(this).parents('tr') ).index());
+        if (dataSet[i].quantity > 0) {        
+            dataSet[i].quantity = dataSet[i].quantity - 1;
+        }
+        table.clear().draw();
+        table.rows.add(dataSet); // Add new data
+        table.columns.adjust().draw(); // Redraw the DataTable
+        updateTotals();    
+    } );
+
+    updateTotals();
+
+} );
+
+
+</script>
+
+
+</body>
+</html>
