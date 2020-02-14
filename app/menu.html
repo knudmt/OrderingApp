@@ -5,17 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>test page</title>
+    <title>Accomapny Delivery</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <!-- Bootstrap core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
 
 </head>
-
+<p style="text-align:center;">
+    <img src="../Images/chick fil a.jpg" class="img-fluid" alt="Accompany"  height=200 width=200 >
+</p>
 <body>
+
 
   
 
@@ -28,7 +31,7 @@
         </tr>
         
     </table>
-    <button id="Cart Button" type="button">View Cart</button>
+    <button id="Cart Button" class="btn btn-lg btn-primary" type="button">View Cart</button>
 
 
 
@@ -41,14 +44,19 @@
 <script src="../js/cart.js"></script>
 
 <!-- JQuery -->
-<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <!-- Bootstrap tooltips -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
 <!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+
+
+
+
+
+
 
 
 
@@ -59,8 +67,11 @@
     result.innerText = name;
 }
 
-  
-var m = new Menus("1");
+var urlParams = new URLSearchParams(window.location.search);
+var concession = urlParams.get('id'); 
+localStorage.setItem('concessionId', concession);
+console.log(concession);
+var m = new Menus(concession);
 var menu = m.getMenus();
 var name = menu.menus.menu.concessionName;
 
@@ -71,7 +82,7 @@ function getMenu(){
     var cart = new Cart();
     document.getElementById("Cart Button").onclick = function () {
         localStorage.setItem('cart', JSON.stringify(cart));
-        window.open("./testcart.html","_self")
+        window.open("./cart.html","_self")
     };
     
     
@@ -81,7 +92,7 @@ function getMenu(){
 
     var table = $('#basicTable').DataTable({
         "fnCreatedRow": function( nRow, aData, iDataIndex ) {
-           $('td:eq(0)', nRow).append("<div class='col1d'><button class='editBut'><img >Add to Cart</button></div>");
+           $('td:eq(0)', nRow).append("<div class='col1d'><button class='btn btn-sm btn-success'><img >Add to Cart</button></div>");
         },
        
                     data: formatted,
