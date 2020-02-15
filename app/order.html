@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>test page</title>
+    <title>Accomapny Delivery</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -17,20 +17,16 @@
 
 <body>
 
-    <!-- table testing -->
-    <table id="basicTable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
-        <thead>
-            <tr>Concession Name</tr>
-        </thead>
-    </table>
-
+    <h1>Test Ordering</h1>
+    <p>working...</p>
 
 </body>
 
-
-
-<script src="../js/concessions.js"></script>
-<script src="../js/menus.js"></script>
+<script src="../js/appUser.js"></script>
+<script src="../js/appItems.js"></script>
+<script src="../js/appDelivery.js"></script>
+<script src="../js/swiftOrder.js"></script>
+<script src="../js/cart.js"></script>
 
 <!-- JQuery -->
 <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
@@ -47,32 +43,28 @@
 
 <script>
 
-function getData(){
-    var cs = new ConcessionList('Tampa');
-    var data = cs.loadConcessions();
-    var formatted = cs.format(data);
+function TestUser(){
+
+    var user = new User("Test User", "404-218-4578", "knudmt@outlook.com", "Concourse C", "Gate B", 2.54);
+
+    // you will get the items from the cart as an array.
+    // so you wouldn't have to do all this. you would call:
+    // var items = cart.getAllItems();
+    // and then pass it into the delivery object
+    var items = [];
+    var item = new Items("Jelly Donut", 2.56, 1);
+    items.push(item);
+
+    // create the app delivery object
+    var delivery = new AppDelivery(user, items, "In Airport", "Dunkin Donuts", 5.10);
+
+    var order = new SwiftOrder(delivery);
+    var resp = order.submitOrder();
 
 
-    var table = $('#basicTable').DataTable({
-                    data: formatted,
-                    columns:[{
-                        title: "Concession Name"
-                    }],
-                });
-    $('#basicTable').on('click', 'tr', function () {
-        var data = table.row( this ).data();
-        window.open("./menutest.html","_self")
-    } );
-
-
-    // test menus
-    var m = new Menus(1);
-    var data = m.getMenus();
-
-    console.log('data ' + data);
 }
 
-window.onload = getData();
+window.onload = TestUser();
 
 </script>
 
