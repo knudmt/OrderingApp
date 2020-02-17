@@ -1,0 +1,476 @@
+{
+    "id": 7,
+    "menu": "{"menus":{"id":"7","menu":{"concessionName":"PDQ \"chicken just made better\" ",
+    "deliveryFee": "5.00",
+    "avgDeliveryTime": "30",
+    "logo": "",
+    "timeInfo": {
+        "sat": [
+            {
+                "open": "11:00",
+                "close": "5:00"
+            }
+        ],
+        "sun": [
+            {
+                "open": "11:00",
+                "close": "5:00"
+            }
+        ],
+        "mon": [
+            {
+                "open": "11:00",
+                "close": "5:00"
+            }
+        ],
+        "tue": [
+            {
+                "open": "11:00",
+                "close": "5:00"
+            }
+        ],
+        "wed": [
+            {
+                "open": "11:00",
+                "close": "5:00"
+            }
+        ],
+        "thu": [
+            {
+                "open": "11:00",
+                "close": "5:00"
+            }
+        ],
+        "fri": [
+            {
+                "open": "11:00",
+                "close": "5:00"
+            }
+        ]
+    },
+    "categories": [
+        {
+            "name": "Breakfast",
+            "menuItems": [
+                {
+                    "name": "avocado, egg & cheese muffin",
+                    "description": " Breakfast egg, cheddar cheese, tomatoes, avocado, homemade ranch on an oversized english muffin",
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "sandwich only",
+                            "price": "$4.39"
+                        },
+                        {
+                            "name": "meals",
+                            "price": "$6.90"
+                        }
+                    ],
+                    "image": []
+                },
+                {
+                    "name": "bacon, egg & cheese biscuit",
+                    "description": " bacon, egg, cheddar cheese on a honey butter biscuit",
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "sandwich only",
+                            "price": "$4.39"
+                        },
+                        {
+                            "name": "meals",
+                            "price": "$6.90"
+                        }
+                    ],
+                    "image": []
+                },
+                {
+                    "name": "chicken biscuit",
+                    "description": " crispy chicken on a honey butter biscuit",
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "sandwich only",
+                            "price": "$4.39"
+                        },
+                        {
+                            "name": "meals",
+                            "price": "$6.90"
+                        }
+                    ],
+                    "image": []
+                }
+            ],
+            "description": null,
+            "images": null,
+            "subItems": null
+        },
+        {
+            "name": "Bowls",
+            "menuItems": [
+                {
+                    "name": "avocado with fresh salsa ",
+                    "description": " served over scrambled eggs, cheddar jack cheese and tots",
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "",
+                            "price": "$6.05"
+                        }
+                    ],
+                    "image": []
+                },
+                {
+                    "name": "crispy honey butter chicken ",
+                    "description": " served over scrambled eggs, cheddar jack cheese and tots",
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "",
+                            "price": "$6.05"
+                        }
+                    ],
+                    "image": []
+                }
+            ],
+            "description": null,
+            "images": null,
+            "subItems": null
+        },
+        {
+            "name": "Bonuts",
+            "menuItems": [
+                {
+                    "name": "housemade biscuit dough dusted with powdered sugar, served with housemade toffee dipping sauce",
+                    "description": null,
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "sandwich only",
+                            "price": "$5.49"
+                        },
+                        {
+                            "name": "meal",
+                            "price": "$8.79"
+                        }
+                    ],
+                    "image": []
+                }
+            ],
+            "description": null,
+            "images": null,
+            "subItems": null
+        },
+        {
+            "name": "",
+            "menuItems": [],
+            "description": null,
+            "images": null,
+            "subItems": null
+        },
+        {
+            "name": "",
+            "menuItems": [],
+            "description": null,
+            "images": null,
+            "subItems": null
+        },
+        {
+            "name": "",
+            "menuItems": [],
+            "description": null,
+            "images": null,
+            "subItems": null
+        },
+        {
+            "name": "Sandwiches",
+            "menuItems": [
+                {
+                    "name": "housemade biscuit dough dusted with powdered sugar, served with housemade toffee dipping sauce",
+                    "description": null,
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "sandwich only",
+                            "price": "$5.49"
+                        },
+                        {
+                            "name": "meal",
+                            "price": "$8.79"
+                        }
+                    ],
+                    "image": []
+                },
+                {
+                    "name": "Honey Butter",
+                    "description": " crispy chicken, housemade honey butter, bread & butter pickles on a toasted brioche bun",
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "sandwich only",
+                            "price": "$5.49"
+                        },
+                        {
+                            "name": "meal",
+                            "price": "$8.79"
+                        }
+                    ],
+                    "image": []
+                },
+                {
+                    "name": "Buffy Bleu",
+                    "description": "2 crispy tenders tossed in buffalo bleu sauce, lettuce on a toasted brioche bun",
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "sandwich only",
+                            "price": "$5.49"
+                        },
+                        {
+                            "name": "meal",
+                            "price": "$8.79"
+                        }
+                    ],
+                    "image": []
+                },
+                {
+                    "name": "Grilled Chicken",
+                    "description": "grilled chicken, honey mustard, lettuce, tomato, dill pickles on a toasted brioche bun",
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "sandwich only",
+                            "price": "$5.49"
+                        },
+                        {
+                            "name": "meal",
+                            "price": "$8.79"
+                        }
+                    ],
+                    "image": []
+                },
+                {
+                    "name": "Crispy Chicken",
+                    "description": "crispy chicken, mayo, lettuce, tomato, dill pickles on a toasted brioche bun",
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "sandwich only",
+                            "price": "$5.49"
+                        },
+                        {
+                            "name": "meal",
+                            "price": "$8.79"
+                        }
+                    ],
+                    "image": []
+                }
+            ],
+            "description": null,
+            "images": null,
+            "subItems": null
+        },
+        {
+            "name": "Get Saucy",
+            "menuItems": [
+                {
+                    "name": "3 piece",
+                    "description": null,
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "Homemade Sauces- sweet sriracha",
+                            "price": "$8.15"
+                        },
+                        {
+                            "name": "buffalo bleu",
+                            "price": "$8.15"
+                        },
+                        {
+                            "name": "honey bbq",
+                            "price": "$8.15"
+                        },
+                        {
+                            "name": "ranch",
+                            "price": "$8.15"
+                        },
+                        {
+                            "name": "honey mustard",
+                            "price": "$8.15"
+                        },
+                        {
+                            "name": "bleu cheese",
+                            "price": "$8.15"
+                        }
+                    ],
+                    "image": []
+                },
+                {
+                    "name": "5 piece",
+                    "description": null,
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "Homemade Sauces- sweet sriracha",
+                            "price": "$10.45"
+                        },
+                        {
+                            "name": "buffalo bleu",
+                            "price": "$10.45"
+                        },
+                        {
+                            "name": "honey bbq",
+                            "price": "$10.45"
+                        },
+                        {
+                            "name": "ranch",
+                            "price": "$10.45"
+                        },
+                        {
+                            "name": "honey mustard",
+                            "price": "$10.45"
+                        },
+                        {
+                            "name": "bleu cheese",
+                            "price": "$10.45"
+                        }
+                    ],
+                    "image": []
+                }
+            ],
+            "description": null,
+            "images": null,
+            "subItems": null
+        },
+        {
+            "name": "Salads",
+            "menuItems": [],
+            "description": null,
+            "images": null,
+            "subItems": null
+        },
+        {
+            "name": "",
+            "menuItems": [
+                {
+                    "name": "Classic Crispy",
+                    "description": " crispy chicken, cheddar and jack cheese, mixed greens, tomatoes, cucumber, honey mustard dressing",
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "",
+                            "price": "$8.00"
+                        }
+                    ],
+                    "image": []
+                },
+                {
+                    "name": "Grilled Chicken",
+                    "description": "grilled chicken, granny smith apples, candied almonds, craisins, tomatoes, mixed greens, blueberry-ginger vinaigrette",
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "",
+                            "price": "$8.15"
+                        }
+                    ],
+                    "image": []
+                }
+            ],
+            "description": null,
+            "images": null,
+            "subItems": null
+        },
+        {
+            "name": "Wraps",
+            "menuItems": [
+                {
+                    "name": "Crispy Chicken Wrap",
+                    "description": " crispy chicken, jack cheese, grape tomato, cucumber, mixed greens, honey mustard wrapped in a flour tortilla",
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "",
+                            "price": "$5.39"
+                        }
+                    ],
+                    "image": []
+                },
+                {
+                    "name": "BLT Wrap",
+                    "description": " grilled chicken, granny smith apples, candied almonds, craisins, tomatoes, mixed greens, blueberry-ginger vinaigrette wrapped in a flour tortilla",
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "",
+                            "price": "$5.39"
+                        }
+                    ],
+                    "image": []
+                }
+            ],
+            "description": null,
+            "images": null,
+            "subItems": null
+        },
+        {
+            "name": "Sides",
+            "menuItems": [
+                {
+                    "name": "Fries",
+                    "description": null,
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "",
+                            "price": "$2.19"
+                        }
+                    ],
+                    "image": []
+                },
+                {
+                    "name": "Tots",
+                    "description": null,
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "",
+                            "price": "$2.75"
+                        }
+                    ],
+                    "image": []
+                },
+                {
+                    "name": "Fruit Cup",
+                    "description": null,
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "",
+                            "price": "$5.75"
+                        }
+                    ],
+                    "image": []
+                },
+                {
+                    "name": "Biscuit",
+                    "description": null,
+                    "images": [],
+                    "subItems": [
+                        {
+                            "name": "",
+                            "price": "$1.49"
+                        }
+                    ],
+                    "image": []
+                }
+            ],
+            "description": null,
+            "images": null,
+            "subItems": null
+        }
+    ]
+}
+}
+}"
+}
