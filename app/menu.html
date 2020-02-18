@@ -15,7 +15,7 @@
 
 </head>
 <p style="text-align:center;">
-    <img src="../Images/chick fil a.jpg" class="img-fluid" alt="Accompany"  height=200 width=200 >
+    <img id='brandImage' class="img-fluid" alt="Accompany"  height=200 width=200 >
 </p>
 <body>
 
@@ -62,15 +62,35 @@
 
 
 <script>
-    function concat(){
+const conns = [
+    1,6,7
+];
+const connsImages = [
+    {"images": {"id":1, "image": "../Images/chick_fil_a.jpg"}},
+    {"images": {"id":6, "image": "../Images/pei_wei.png"}},
+    {"images": {"id":7, "image": "../Images/pdq.png"}}
+];
+
+function concat(){
     var result = document.getElementById("result");
     result.innerText = name;
+}
+function setBrandImage(brandId){
+    for(var i = 0; i < connsImages.length; i++){
+        if(connsImages[i].images.id == brandId){
+            $('#brandImage').attr("src", connsImages[i].images.image);
+        }
+    }
+    
 }
 
 var urlParams = new URLSearchParams(window.location.search);
 var concession = urlParams.get('id'); 
 localStorage.setItem('concessionId', concession);
 console.log(concession);
+
+setBrandImage(concession);
+
 var m = new Menus(concession);
 var menu = m.getMenus();
 var name = menu.menus.menu.concessionName;
@@ -96,10 +116,14 @@ function getMenu(){
         },
        
                     data: formatted,
+                    searching: false,
+                    info: false,
+                    paging: false,
+                    order: [],
                     columns:[
-                        {title: "Item Name", "width":"20%"},
-                        {title: "Item Description"},
-                        {title: "Item Price"},
+                        {title: "Item Name", "width":"20%", orderable: false},
+                        {title: "Item Description", orderable: false},
+                        {title: "Item Price", orderable: false},
                     ],
                 })
        

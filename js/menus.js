@@ -31,16 +31,28 @@ class Menus {
         
         var root = new Array(0);
 
+        var numCategories = menu.menus.menu.categories.length;
+        console.log('Number of Categories = ' + numCategories);
+
         var i;
-        for(i = 0; i < menu.menus.menu.categories[0].menuItems.length; i++){
-            var ta = new Array(2)
+        var j;
+        for(j=0; j< numCategories; j++){
+            console.log('category name =' + menu.menus.menu.categories[j].name);
+            if (menu.menus.menu.categories[j].hasOwnProperty('menuItems')){
+                for(i = 0; i < menu.menus.menu.categories[j].menuItems.length; i++){
+                    var ta = new Array(2)
+                    
+                    ta[0] = menu.menus.menu.categories[j].menuItems[i].name;
+                    ta[1] = menu.menus.menu.categories[j].menuItems[i].description;
+                    ta[2] = menu.menus.menu.categories[j].menuItems[i].subItems[0].price;
+                    console.log(ta[0] + " , " + ta[1] + " , " + ta[2]);
+                    root.push(ta);
+                }
+
+            }
             
-            ta[0] = menu.menus.menu.categories[0].menuItems[i].name;
-            ta[1] = menu.menus.menu.categories[0].menuItems[i].description;
-            ta[2] = menu.menus.menu.categories[0].menuItems[i].subItems[0].price;
-            console.log(ta[0] + " , " + ta[1] + " , " + ta[2]);
-            root.push(ta);
         }
+        
 
         return root;
     }

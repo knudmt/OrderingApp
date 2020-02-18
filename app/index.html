@@ -62,8 +62,12 @@ function getData(){
 
     var table = $('#basicTable').DataTable({
                     data: formatted,
+                    searching: false,
+                    info: false,
+                    paging: false,
+                    order: [],
                     columns:[{
-                        title: "Concession Name"
+                        title: "Concession Name", orderable: false
                     }],
                 });
     $('#basicTable').on('click', 'tr', function () {
