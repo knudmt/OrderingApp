@@ -1,39 +1,68 @@
-<!DOCTYPE html>
 <html>
-  <title>Accomapny Delivery</title>
+  <head>
+    <meta charset="utf-8" />
+    <title>Accomapny Delivery</title>
+    <meta name="description" content="A demo of Stripe Payment Intents" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link res="stylesheet" href="css/global.css">
+    <link res="stylesheet" href="css/normalize.css">
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   
+    
+  </head>
+  
 <body>
+  
 
-<h2>HTML Forms</h2>
+<div class="card" style="width: 30rem; margin: 0 auto; float: none; margin-bottom: 10px;">
+  <div class="card-body">
+    <h5 class="card-title">Payment</h5>
+    <div class="sr-root">
+      <div class="sr-main">
+        <form id="payment-form" class="sr-payment-form">
+          <div class="sr-combo-inputs-row">
+            <div class="sr-input sr-card-element" id="card-element"></div>
+          </div>
+          <div class="sr-field-error" id="card-errors" role="alert"></div>
+          <br/>
+          <button id="submit">
+            <div class="spinner hidden" id="spinner"></div>
+            <span id="button-text">Pay</span><span id="order-amount">300</span>
+          </button>
+        </form>
+        <div class="sr-result hidden">
+          <p>Payment completed<br /></p>
+          <pre>
+            <code></code>
+          </pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<form action="">
-  First name:<br>
-  <input type="text" name="firstname" value="">
-  <br>
-  Middle name:<br>
-  <input type="text" name="middlename" value="">
-  <br>
-  Last name:<br>
-  <input type="text" name="lastname" value="">
-  <br>
-  Address:<br>
-  <input type="text" name="address" value="">
-  <br>
-  City:<br>
-  <input type="text" name="city" value="">
-  <br>
-  State:<br>
-  <input type="text" name="state" value="">
-  <br>
-  Zipcode:<br>
-  <input type="int" name="zipcode" value=>
-  <br>
-  Phone number:<br>
-  <input type="int" name="zipcode" value=>
-  <br>
-  <input type="submit" value="Submit">
-</form> 
+  
+  <script src="../js/charge.js"></script>  
+  
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-<p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
+  <script>
 
+    function init(){
+      var order = { amount: '150' };
+      var chrg = new Charge(order);
+      
+    }
+    
+    window.onload = init();
+  </script>
 </body>
+
+
+
 </html>
+
