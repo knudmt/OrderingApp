@@ -74,11 +74,24 @@ class Charge {
                 dataType: 'json',
                 success: function(responseData, textStatus, jqXHR){
                     console.log('RECEIVED: ' + responseData); // returns string[] = ["status", 200, true]
-                    // from here we check that responseData[2] = true
-                    // 
+                    // check that responseData[0] = 'authorized'
+                    // check that responseData[1] = 200
+                    // check that responseData[2] = true
+                    /*
+                        var swift = new SwiftOrder(AppDelivery);
+                        var submitted = swift.submitOrder();
+
+                        this could also be done in checkout.html in the script code
+                        but this method would have to return a boolean or an object
+                        to ensure that the order should be placed
+
+                        also need to make a method to handle the different status that come
+                        back. unauthorized, requires 2nd auth, declined 
+                    */
                 },
                 error: function(responseData, textStatus, errorThrown){
                     console.log('ERROR: ' + errorThrown);
+                    // show an alert that says there is a problem with the server
                 }
             });
         });
