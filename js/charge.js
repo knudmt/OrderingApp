@@ -30,6 +30,7 @@ class Charge {
         var card = elements.create("card", {style: style});
         card.mount("#card-element");
 
+        // client secret
         this.enable(card, 'sk_test_lYdrgrBchpJ3LV0LFpymd44E00vuNQOFB6');
     }
 
@@ -59,7 +60,7 @@ class Charge {
         .then(function(){
 
             var amt = document.getElementById("order-amount").textContent;
-            var json = { token : tkn, amount: amt }; 
+            var json = { token : tkn, amount: amt }; // the amount must be in cents...
 
             $.ajax({
                 type: 'POST',
@@ -97,6 +98,9 @@ class Charge {
         });
     }
 
+    handleStripeEvent(option){
+        //based on input do...
+    }
 
     changeLoadingState(isLoading){
         if(isLoading){
