@@ -45,6 +45,38 @@ class Charge {
     }
 
     getToken(card, clientSecret){
+
+        var fname = document.getElementById("first_name").value;
+        var lname = document.getElementById("last_name").value;
+        var term = document.getElementById("terminal").value;
+        var gate = document.getElementById("gate").value;
+        var phone = document.getElementById("phone").value;
+        var email = document.getElementById("email").value;
+        var tip = document.getElementById("tip").value;
+
+        if(fname === "" || lname === "" || term === "" || gate === "" || phone === "" || email === "" || tip === ""){
+            alert("You must complete the form");
+            // change state
+            this.changeLoadingState(false);
+            // throw to stop
+            throw 'form items not completed';
+            
+        } else {
+            var usr = { first: fname, last: lname };
+            var user = new User(usr, phone, email, term, gate, tip);
+            
+            window.localStorage.setItem('user', JSON.stringify(user));
+            // PUT total in local storage
+            // iterate over the items and get the total
+            // calculate total CENTS put in local storage
+            // this could be done on the init if you want
+            // total should already be done and set on THIS screen for user to see
+            // window.localStorage.setItem('total_cents', totalcents);
+        }
+
+
+        
+
         this.changeLoadingState(true);
         var tkn = null;
 
@@ -89,6 +121,7 @@ class Charge {
                         also need to make a method to handle the different status that come
                         back. unauthorized, requires 2nd auth, declined 
                     */
+                   alert("Your card has been charged successfully!");
                 },
                 error: function(responseData, textStatus, errorThrown){
                     console.log('ERROR: ' + errorThrown);
