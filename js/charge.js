@@ -52,15 +52,18 @@ class Charge {
         var phone = document.getElementById("phone").value;
         var email = document.getElementById("email").value;
         var tip = document.getElementById("tip").value;
+        // parse & set the local storage
         var total = parseFloat(localStorage.getItem('cartTotal')).toFixed(2);
+        // convert to cents
         var totalCents = total*100;
+        // set to local storage
         localStorage.setItem('totalCents', totalCents);
 
         if(fname === "" || lname === "" || term === "" || gate === "" || phone === "" || email === "" || tip === ""){
             alert("You must complete the form");
             // change state
             this.changeLoadingState(false);
-            // throw to stop
+            // throw to stop processing...
             throw 'form items not completed';
             
         } else {
@@ -69,8 +72,6 @@ class Charge {
             window.localStorage.setItem('user', JSON.stringify(user));
         }
 
-
-        
 
         this.changeLoadingState(true);
         var tkn = null;
@@ -102,20 +103,23 @@ class Charge {
                 dataType: 'json',
                 success: function(responseData, textStatus, jqXHR){
                     console.log('RECEIVED: ' + responseData); // returns string[] = ["status", 200, true]
+                    
                     // check that responseData[0] = 'authorized'
                     // check that responseData[1] = 200
                     // check that responseData[2] = true
-                    /*
-                        var swift = new SwiftOrder(AppDelivery);
-                        var submitted = swift.submitOrder();
-
-                        this could also be done in checkout.html in the script code
-                        but this method would have to return a boolean or an object
-                        to ensure that the order should be placed
-
-                        also need to make a method to handle the different status that come
-                        back. unauthorized, requires 2nd auth, declined 
-                    */
+                    if(responseData[2] === "True")
+                    {
+                        var usrParsed = JSON.parse(localStorage.getItem('user'));
+                        var nme = usrParsed.userName.first.concat(usrParsed.userName.last);
+                        var usr = new User(nme, usrParsed.phone, usrParsed.email, usrParsed.terminal, usrParsed.gate, usrParsed.tip);
+                        // get the items
+                        var itms = JSON.parse(localStorage.getItem('cart'));
+                        var appDev = new AppDelivery(usr, itms.items, "in airport", "PDQ Chicken", totalCents);
+                        
+                        var swift = new SwiftOrder(appDev);
+                        // the call to submitOrder is throwing a 500, MTK will investigate
+                        //var submitted = swift.submitOrder();
+                    }
                    alert("Your card has been charged successfully!");
                 },
                 error: function(responseData, textStatus, errorThrown){
