@@ -45,7 +45,6 @@ class Charge {
     }
 
     getToken(card, clientSecret){
-
         var fname = document.getElementById("first_name").value;
         var lname = document.getElementById("last_name").value;
         var term = document.getElementById("terminal").value;
@@ -53,6 +52,9 @@ class Charge {
         var phone = document.getElementById("phone").value;
         var email = document.getElementById("email").value;
         var tip = document.getElementById("tip").value;
+        var total = parseFloat(localStorage.getItem('cartTotal')).toFixed(2);
+        var totalCents = total*100;
+        localStorage.setItem('totalCents', totalCents);
 
         if(fname === "" || lname === "" || term === "" || gate === "" || phone === "" || email === "" || tip === ""){
             alert("You must complete the form");
@@ -64,14 +66,7 @@ class Charge {
         } else {
             var usr = { first: fname, last: lname };
             var user = new User(usr, phone, email, term, gate, tip);
-            
             window.localStorage.setItem('user', JSON.stringify(user));
-            // PUT total in local storage
-            // iterate over the items and get the total
-            // calculate total CENTS put in local storage
-            // this could be done on the init if you want
-            // total should already be done and set on THIS screen for user to see
-            // window.localStorage.setItem('total_cents', totalcents);
         }
 
 
@@ -92,7 +87,7 @@ class Charge {
         .then(function(){
 
             var amt = document.getElementById("order-amount").textContent;
-            var json = { token : tkn, amount: amt }; // the amount must be in cents...
+            var json = { token : tkn, amount: totalCents }; // the amount must be in cents...
 
             $.ajax({
                 type: 'POST',
