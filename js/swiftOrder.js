@@ -19,7 +19,7 @@ class SwiftOrder
 
         $.ajax({
             type:'POST',
-            url: 'https://accompanyweborder.azurewebsites.net',  
+            url: 'https://accompanyweborder.azurewebsites.net/api/Delivery',  
             contentType: 'application/json',
             headers: {
                 "Accept" : "application/json",
