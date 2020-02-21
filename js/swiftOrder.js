@@ -33,7 +33,7 @@ class SwiftOrder
                 resp = responseData;
             },
             error: function(responseData, textStatus, errorThrown){
-                if(responseData.statusText === "Booking Created"){ // bug here. not sure what
+                if(responseData.statusText === "OK"){ // bug here. not sure what
                     console.log("BOOKING CREATED");
                     return responseData.statusText;
                 }else {
