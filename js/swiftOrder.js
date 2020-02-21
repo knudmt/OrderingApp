@@ -19,7 +19,7 @@ class SwiftOrder
 
         $.ajax({
             type:'POST',
-            url: 'https://accompanyorder.azurewebsites.net/api/Delivery',
+            url: 'https://accompanyweborder.azurewebsites.net',  
             contentType: 'application/json',
             headers: {
                 "Accept" : "application/json",
@@ -33,8 +33,12 @@ class SwiftOrder
                 resp = responseData;
             },
             error: function(responseData, textStatus, errorThrown){
-                console.log('ERROR: ' + errorThrown);
-                throw 'ERROR ' + errorThrown;
+                if(responseData.statusText === "Booking Created"){ // bug here. not sure what
+                    console.log("BOOKING CREATED");
+                }else {
+                    throw "ERROR Booking failed with: " + errorThrown;
+                }
+                
             }
         });
 
