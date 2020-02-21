@@ -114,11 +114,24 @@ class Charge {
                         var usr = new User(nme, usrParsed.phone, usrParsed.email, usrParsed.terminal, usrParsed.gate, usrParsed.tip);
                         // get the items
                         var itms = JSON.parse(localStorage.getItem('cart'));
-                        var appDev = new AppDelivery(usr, itms.items, "in airport", "PDQ Chicken", totalCents);
+                        // problem with items
+                        var temp = [];
+                        for(var i = 0; i < itms.items.length; i++)
+                        {
+                            var p = itms.items[i]._price.slice(1);
+                            var obj = {
+                                description: itms.items[i]._description,
+                                price : parseFloat(p), // change to decimal
+                                quanity : itms.items[i]._quantity // change to int
+                            };
+                            temp.push(obj);
+                        }
+                        var appDev = new AppDelivery(usr, temp, "in airport", "PDQ Chicken", totalCents);
+                        //var appDev = new AppDelivery(usr, itms.items, "in airport", "PDQ Chicken", totalCents);
                         
                         var swift = new SwiftOrder(appDev);
                         // the call to submitOrder is throwing a 500, MTK will investigate
-                        //var submitted = swift.submitOrder();
+                        var submitted = swift.submitOrder();
                     }
                    alert("Your card has been charged successfully!");
                 },
