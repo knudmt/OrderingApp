@@ -58,89 +58,103 @@ class Charge {
         var totalCents = total*100;
         // set to local storage
         localStorage.setItem('totalCents', totalCents);
-
-        if(fname === "" || lname === "" || term === "" || gate === "" || phone === "" || email === "" || tip === ""){
-            alert("You must complete the form");
-            // change state
-            this.changeLoadingState(false);
-            // throw to stop processing...
-            throw 'form items not completed';
-            
-        } else {
-            var usr = { first: fname, last: lname };
-            var user = new User(usr, phone, email, term, gate, tip);
-            window.localStorage.setItem('user', JSON.stringify(user));
+        var message = document.getElementById("paymentStatus");
+        
+        try{
+            if(fname === "" || lname === "" || term === "" || gate === "" || phone === "" || email === "" || tip === ""){
+                // change state
+                this.changeLoadingState(false);
+                // throw to stop processing...
+                throw 'form items not completed';
+            } else {
+                var usr = { first: fname, last: lname };
+                var user = new User(usr, phone, email, term, gate, tip);
+                window.localStorage.setItem('user', JSON.stringify(user));
+            }
+        } catch(err){
+            message.innerHTML = "Error: " + err ;
+        } finally {
+            //document.getElementById("demo").value = "";
         }
+        
+            
+      
 
 
         this.changeLoadingState(true);
         var tkn = null;
-
-        this.stripe.createToken(card).then(function(result){
-            if(result.error){
-                console.log('ERROR: ' + result.error);
-                throw 'error retreiving token from "stripe"';
-            } else {
-                tkn = result.token.id;
-                console.log('Token received');
-            }
-        })
-        .then(function(){
-
-            var amt = document.getElementById("order-amount").textContent;
-            var json = { token : tkn, amount: totalCents }; // the amount must be in cents...
-
-            $.ajax({
-                type: 'POST',
-                url: 'https://accompanypayments.azurewebsites.net/api/payment',
-                contentType: 'application/json',
-                headers: {
-                    "Accept" : "application/json",
-                    "Access-Control-Allow-Origin" : "*",
-                },
-                async: false,
-                data: JSON.stringify(json),
-                dataType: 'json',
-                success: function(responseData, textStatus, jqXHR){
-                    console.log('RECEIVED: ' + responseData); // returns string[] = ["status", 200, true]
-                    
-                    // check that responseData[0] = 'authorized'
-                    // check that responseData[1] = 200
-                    // check that responseData[2] = true
-                    if(responseData[2] === "True")
-                    {
-                        var usrParsed = JSON.parse(localStorage.getItem('user'));
-                        var nme = usrParsed.userName.first.concat(usrParsed.userName.last);
-                        var usr = new User(nme, usrParsed.phone, usrParsed.email, usrParsed.terminal, usrParsed.gate, usrParsed.tip);
-                        // get the items
-                        var itms = JSON.parse(localStorage.getItem('cart'));
-                        // problem with items
-                        var temp = [];
-                        for(var i = 0; i < itms.items.length; i++)
-                        {
-                            var p = itms.items[i]._price.slice(1);
-                            var obj = {
-                                description: itms.items[i]._description,
-                                price : parseFloat(p), // change to decimal
-                                quanity : itms.items[i]._quantity // change to int
-                            };
-                            temp.push(obj);
-                        }
-                        var appDev = new AppDelivery(usr, temp, "in airport", "PDQ Chicken", totalCents);
-                        //var appDev = new AppDelivery(usr, itms.items, "in airport", "PDQ Chicken", totalCents);
-                        
-                        var swift = new SwiftOrder(appDev);
-                        // the call to submitOrder is throwing a 500, MTK will investigate
-                        var submitted = swift.submitOrder();
-                    }
-                   alert("Your card has been charged successfully!");
-                },
-                error: function(responseData, textStatus, errorThrown){
-                    console.log('ERROR: ' + errorThrown);
-                    // show an alert that says there is a problem with the server
+        
+        try{
+            this.stripe.createToken(card).then(function(result){
+                if(result.error){
+                    console.log('ERROR: ' + result.error);
+                    throw 'error retreiving token from "stripe"';
+                } else {
+                    tkn = result.token.id;
+                    console.log('Token received');
                 }
+            })
+            .then(function(){
+    
+                var amt = document.getElementById("order-amount").textContent;
+                var json = { token : tkn, amount: totalCents }; // the amount must be in cents...
+    
+                $.ajax({
+                    type: 'POST',
+                    url: 'https://accompanypayments.azurewebsites.net/api/payment',
+                    contentType: 'application/json',
+                    headers: {
+                        "Accept" : "application/json",
+                        "Access-Control-Allow-Origin" : "*",
+                    },
+                    async: false,
+                    data: JSON.stringify(json),
+                    dataType: 'json',
+                    success: function(responseData, textStatus, jqXHR){
+                        console.log('RECEIVED: ' + responseData); // returns string[] = ["status", 200, true]
+                        
+                        // check that responseData[0] = 'authorized'
+                        // check that responseData[1] = 200
+                        // check that responseData[2] = true
+                        if(responseData[2] === "True")
+                        {
+                            var usrParsed = JSON.parse(localStorage.getItem('user'));
+                            var nme = usrParsed.userName.first.concat(usrParsed.userName.last);
+                            var usr = new User(nme, usrParsed.phone, usrParsed.email, usrParsed.terminal, usrParsed.gate, usrParsed.tip);
+                            // get the items
+                            var itms = JSON.parse(localStorage.getItem('cart'));
+                            // problem with items
+                            var temp = [];
+                            for(var i = 0; i < itms.items.length; i++)
+                            {
+                                var p = itms.items[i]._price.slice(1);
+                                var obj = {
+                                    description: itms.items[i]._description,
+                                    price : parseFloat(p), // change to decimal
+                                    quanity : itms.items[i]._quantity // change to int
+                                };
+                                temp.push(obj);
+                            }
+                            var appDev = new AppDelivery(usr, temp, "in airport", "PDQ Chicken", totalCents);
+                            //var appDev = new AppDelivery(usr, itms.items, "in airport", "PDQ Chicken", totalCents);
+                            
+                            var swift = new SwiftOrder(appDev);
+                            // the call to submitOrder is throwing a 500, MTK will investigate
+                            var submitted = swift.submitOrder();
+                        }
+                        window.open("./thankyou.html","_self")
+                    },
+                    error: function(responseData, textStatus, errorThrown){
+                        console.log('ERROR: ' + errorThrown);
+                        throw errorThrown;
+                        // show an alert that says there is a problem with the server
+                    }
+                });
             });
-        });
+        } catch(err){
+            message.innerHTML = "Error: " + err ;
+        }
+        
     }
 
     handleStripeEvent(option){

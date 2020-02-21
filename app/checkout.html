@@ -80,8 +80,8 @@
             <span id="button-text">Pay </span><span id="order-amount"></span>
           </button>
         </form>
-        <div class="sr-result hidden">
-          <p>Payment completed<br /></p>
+        <div id="paymentStatus" class="sr-result hidden">
+          <p><br /></p>
           <pre>
             <code></code>
           </pre>
@@ -115,6 +115,7 @@
           if ($('#tip').val().length > 0){
             var total2 = Number(total) + Number(parseFloat($('#tip').val()).toFixed(2));;
             $('#order-amount').text('$' + total2);
+            localStorage.setItem('cartTotal', total2);
           } else {
             $('#order-amount').text('$' + total);
           }
