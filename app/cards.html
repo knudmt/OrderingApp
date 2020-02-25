@@ -42,7 +42,7 @@
                 var concession = urlParams.get('id'); 
                 localStorage.setItem('concessionId', concession);
 
-                var m = new Menus(9);
+                var m = new Menus(concession);
                 var menu = m.getMenus();
 
                 this.createMenuCard(menu);
