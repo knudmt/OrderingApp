@@ -42,7 +42,7 @@
                 var concession = urlParams.get('id'); 
                 localStorage.setItem('concessionId', concession);
 
-                var m = new Menus(concession);
+                var m = new Menus(9);
                 var menu = m.getMenus();
 
                 this.createMenuCard(menu);
@@ -154,6 +154,34 @@
                             }
                             
                         });
+
+                        btn.addEventListener("click", (e)=> {
+                            try
+                            {
+                                var path = e.composedPath();
+                                var inputs = path[2].querySelector("div > div.list-group").getElementsByTagName("input");
+                                var description = path[2].querySelector("div > div.card-title").innerText;
+                                for(var l = 0; l < inputs.length; l++){
+                                    if(inputs[l].checked === true){
+
+                                        var obj = {
+                                            option : inputs[l].value,
+                                            price : inputs[l].getAttribute("price")
+                                        };
+
+                                    
+                                        alert("Added " + description + " to cart");
+                                        description += " " + obj.option;
+                                        var appItem = new AppItems(description, obj.price, 1);
+                                        cart.addItem(appItem); 
+                                    }
+                                }
+                            }
+                            catch(error)
+                            {
+                                alert('ERROR' + error.message);
+                            }
+                        });
                        
                         btn.className = "btn btn-primary";
                         btn.innerText = "Add To Cart";
@@ -175,6 +203,14 @@
                     }
                     catch(error)
                     {
+                        alert("ERROR " + error.message);
+                    }
+                });
+                chk.addEventListener("click", (e)=> {
+                    try{
+                        cart.save();
+                        window.open('./cart.html', '_self');
+                    } catch(error){
                         alert("ERROR " + error.message);
                     }
                 });
